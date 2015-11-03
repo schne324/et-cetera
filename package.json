@@ -1,0 +1,27 @@
+{
+  "name": "et-cetera",
+  "version": "1.0.0",
+  "description": "ellipsis handler",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schne324/et-cetera.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schne324/et-cetera/issues"
+  },
+  "homepage": "https://github.com/schne324/et-cetera",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-stylus": "^2.1.0",
+    "jade": "^1.11.0",
+    "path": "^0.12.7",
+    "stylus": "^0.52.4"
+  }
+}

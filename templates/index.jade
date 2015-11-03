@@ -1,0 +1,20 @@
+doctype html
+html(lang="en-US")
+	head
+		title ET CETERA
+		link(rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")
+		link(rel="stylesheet" href="styles.css")
+	body
+		.main(role="main" aria-labelledby="main-heading")
+			h1#main-heading Et Cetera
+			div
+				.example http://asdf.com/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf
+			div
+				.example asdfasdlfkjasdlkfjaslkj dflsadkjf laskdjf asdfl kjasdlf kjasd;f lkjasdfl; kjasd;lf kjasd;lfkj asd;lkfj 
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+		script(src='index.js')
+		script.
+			jQuery('.example').etCetera(function (txt) {
+				return txt.substr(0, 40);
+			});
+

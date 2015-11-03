@@ -1,0 +1,13 @@
+{
+  "laxbreak": true,
+  "strict": false,
+  "node": true,
+  "globals": [
+    "before",
+    "after",
+    "should",
+    "it",
+    "describe",
+    "jQuery"
+  ]
+}
