@@ -2,7 +2,7 @@
   "name": "et-cetera",
   "version": "1.0.0",
   "description": "ellipsis handler",
-  "main": "index.js",
+  "main": "scripts/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
