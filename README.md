@@ -6,6 +6,10 @@
 * After forking or cloning this repo, assuming node is installed run `npm install`
 * Once the deps are installed, running `gulp` will build everything into the `'build'` directory
 * The example page will be found in `build/index.html`
+* if you don't have node installed and do not wish to make any changes, the `build` directory holds everything you need
+
+## Bower
+* `bower install et-cetera`
 
 ## Options
 * `characters`: {Number|Function} Either the number of characters to display (clip the rest off) OR a function that returns the characters to display
