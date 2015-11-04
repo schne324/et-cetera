@@ -12,10 +12,10 @@
 * `bower install et-cetera`
 
 ## Options
-* `characters`: {Number|Function} Either the number of characters to display (clip the rest off) OR a function that returns the characters to display
+* `characters`: _{Number|Function}_ Either the number of characters to display (clip the rest off) OR a function that returns the characters to display
 	* (defaults to 50)
-* `onClick`: {Function} A function that is called when the ellipsis trigger is clicked.  This function will receive the trigger element as well as the clipped element's full text
-* `buttonClass`: {String} A class to be added to the ellipsis button (also accepts multiple space-separated classes)
+* `onClick`: _{Function}_ A function that is called when the ellipsis trigger is clicked.  This function will receive the trigger element as well as the clipped element's full text
+* `buttonClass`: _{String}_ A class to be added to the ellipsis button (also accepts multiple space-separated classes)
 	* (defaults to ion-more)
 * Example usage:
 
