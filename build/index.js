@@ -10,7 +10,8 @@
 jQuery.fn.etCetera = function (userOptions) {
 	var options = jQuery.extend({
 		characters: 50, // can be a number or a function that returns characters to display
-		buttonClass: 'ion-more'
+		buttonClass: 'ion-more',
+		selectText: true
 	}, userOptions);
 	return this.each(function () {
 		etc(this, options);
@@ -30,8 +31,15 @@ function etc(el, options) {
 		visibleText = $el.text().substr(0, options.characters);
 	}
 
-	if (visibleText === fullText) {
-		return; // no need to clip...
+	if (visibleText === fullText) { 
+		// options.characters did not dictate any modification of the text
+		if (options.selectText) {
+			$el.on('click', function () {
+				selectText(this);
+			});
+		}
+
+		return; // no need to clip or add any sort of button...
 	}
 
 	// replace the full text with the calculated visible text
@@ -50,5 +58,25 @@ function etc(el, options) {
 			.on('click', function () {
 				options.onClick(this, fullText);
 			});
+	}
+}
+
+/**
+ * Selects the text of `element`
+ * @param  {HTMLElement} element the element in which the text will be selected/highlighted
+ */
+function selectText(element) {
+	var range, selection;
+
+	if (document.body.createTextRange) {
+		range = document.body.createTextRange();
+		range.moveToElementText(element);
+		range.select();
+	} else if (window.getSelection) {
+		selection = window.getSelection();
+		range = document.createRange();
+		range.selectNodeContents(element);
+		selection.removeAllRanges();
+		selection.addRange(range);
 	}
 }

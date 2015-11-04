@@ -4,11 +4,16 @@ describe('etCetera', function () {
 	var $test;
 	var jQuery = window.jQuery;
 	beforeEach(function () {
-		jQuery('#fixture')
+		var $fixture = jQuery('#fixture');
+		$fixture
 			.empty()
 			.append(jQuery('<div class="test">foo-bar-baz</div>'));
 
-		$test = jQuery('.test');
+		$test = $fixture.find('.test');
+	});
+
+	after(function () {
+		jQuery('#fixture').empty();
 	});
 	
 	it('should chain', function () {
@@ -106,5 +111,36 @@ describe('etCetera', function () {
 			});
 		});
 	});
+
+	// unfortunately, phantom doesn't support certain DOM
+	// methods such as window.getSelection so we can only
+	// run this test if it is being run in browser
+	if (window.mochaPhantomJS) {
+		describe('`options.selectText`', function () {
+			it('should select text on click if text not clipped', function (done) {
+				$test.etCetera({
+					selectText: true,
+					characters: 9999
+				});
+
+				$test.trigger('click');
+
+				setTimeout(function () {
+					assert.equal(getSelectionText(), 'foo-bar-baz');
+					done();
+				});
+			});
+		});
+	}
 		
 });
+
+function getSelectionText() {
+	var text = '';
+	if (window.getSelection) {
+		text = window.getSelection().toString();
+	} else if (document.selection && document.selection.type != 'Control') {
+		text = document.selection.createRange().text;
+	}
+	return text;
+}
