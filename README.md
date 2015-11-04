@@ -17,6 +17,7 @@
 * `onClick`: _{Function}_ A function that is called when the ellipsis trigger is clicked.  This function will receive the trigger element as well as the clipped element's full text
 * `buttonClass`: _{String}_ A class to be added to the ellipsis button (also accepts multiple space-separated classes)
 	* (defaults to ion-more)
+* `selectText`: _{Boolean}_ Whether or not to select the text in the given element when its clicked
 * Example usage:
 
 ```js
