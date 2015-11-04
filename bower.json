@@ -1,0 +1,19 @@
+{
+  "name": "et-cetera",
+  "version": "0.0.0",
+  "homepage": "https://github.com/schne324/et-cetera",
+  "authors": [
+    "Harris Schneiderman <harris.schneiderman@deque.com>"
+  ],
+  "description": "",
+  "main": "scripts/index.js",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
