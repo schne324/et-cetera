@@ -8,7 +8,7 @@
 * The example page will be found in `build/index.html`
 * if you don't have node installed and do not wish to make any changes, the `build` directory holds everything you need
 
-## Bower
+### Bower
 * `bower install et-cetera`
 
 ## Options
