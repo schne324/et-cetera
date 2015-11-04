@@ -4,12 +4,12 @@
  * Clips an element's text and replaces
  * the clipped portion with an ellipsis button
  * 
- * @param  {Number|Function} userMaxLength A number of characters to accept |or| a function that returns the clipped string
+ * @param  {Object} options User's options
  * @return {jQuery}          this	
  */
 jQuery.fn.etCetera = function (userOptions) {
 	var options = jQuery.extend({
-		characters: 50,
+		characters: 50, // can be a number or a function that returns characters to display
 		buttonClass: 'ion-more'
 	}, userOptions);
 	return this.each(function () {

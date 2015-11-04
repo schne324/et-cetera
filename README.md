@@ -1,23 +1,50 @@
 # Et Cetera
 
 * Et Cetera will ellipsis-ify an element's text by clipping off desired portion of string and replacing that with an ellipsis button ('...')
-* This jQuery plugin accepts one single param: `maxLen`
-	* `maxLen` can be a number (the number of characters to display) |or| a function that returns the portion of the text to be displayed
 
 ## Installation / Usage
 * After forking or cloning this repo, assuming node is installed run `npm install`
 * Once the deps are installed, running `gulp` will build everything into the `'build'` directory
 * The example page will be found in `build/index.html`
+
+## Options
+* `characters`: {Number|Function} Either the number of characters to display (clip the rest off) OR a function that returns the characters to display
+* `onClick`: {Function} A function that is called when the ellipsis trigger is clicked.  This function will receive the trigger element as well as the clipped element's full text
+* `buttonClass`: {String} A class to be added to the ellipsis button (also accepts multiple space-separated classes)
 * Example usage:
 
 ```js
-jQuery('#foo').etCetera(50); // will clip #foo after 50 characters
+jQuery('#foo').etCetera({
+	characters: 50
+}); // will clip #foo after 50 characters
 ```
-	OR
+
+OR
+
 
 ```js
-jQuery('#foo')
-	.etCetera(function (txt) {
-		return txt.substr(0, txt.lastIndexOf('/')) // will clip foo at its last slash
-	});
- ```
+jQuery('#foo').etCetera({
+	characters: function (trigger, text) {
+		return txt.substr(0, txt.lastIndexOf('/')) // will clip #foo at its last slash
+	}
+}
+});
+
+```
+
+
+OR
+
+```js
+jQuery('#foo').etCetera({
+	buttonClass: 'my-button',
+	characters: 29,
+	onClick: function (ellipsiBtn, fullText) {
+		console.log('clicked: ', ellipsiBtn);
+		alert('this full text is: ', fullText);
+	}
+})
+```
+
+## Tests
+* Running tests is as simple as `gulp test`
