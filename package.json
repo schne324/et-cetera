@@ -17,11 +17,18 @@
   },
   "homepage": "https://github.com/schne324/et-cetera",
   "devDependencies": {
+    "better-assert": "^1.0.2",
+    "chai": "^3.4.0",
+    "fs-extra": "^0.26.2",
     "gulp": "^3.9.0",
     "gulp-jade": "^1.1.0",
+    "gulp-shell": "^0.5.1",
     "gulp-stylus": "^2.1.0",
     "jade": "^1.11.0",
-    "path": "^0.12.7",
+    "mocha": "^2.3.3",
     "stylus": "^0.52.4"
+  },
+  "dependencies": {
+    "mocha-phantomjs": "^4.0.1"
   }
 }

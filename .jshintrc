@@ -4,6 +4,7 @@
   "node": true,
   "globals": [
     "before",
+    "beforeEach",
     "after",
     "should",
     "it",

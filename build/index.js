@@ -7,25 +7,27 @@
  * @param  {Number|Function} userMaxLength A number of characters to accept |or| a function that returns the clipped string
  * @return {jQuery}          this	
  */
-jQuery.fn.etCetera = function (userMaxLength) {
+jQuery.fn.etCetera = function (userOptions) {
+	var options = jQuery.extend({
+		characters: 50,
+		buttonClass: 'ion-more'
+	}, userOptions);
 	return this.each(function () {
-		etc(this, userMaxLength);
+		etc(this, options);
 	});
 };
 
-function etc(el, userMaxLength) {
-	var maxLen = userMaxLength || 50;
-
+function etc(el, options) {
 	var $el = jQuery(el);
 
 	var fullText = $el.text(); // cache all of the text
 	var visibleText;
 
 	// get the text to be displayed (without the clipped portion)
-	if (typeof maxLen === 'function') {
-		visibleText = maxLen($el.text());
+	if (typeof options.characters === 'function') {
+		visibleText = options.characters($el.text());
 	} else {
-		visibleText = $el.text().substr(0, maxLen);
+		visibleText = $el.text().substr(0, options.characters);
 	}
 
 	if (visibleText === fullText) {
@@ -36,11 +38,17 @@ function etc(el, userMaxLength) {
 	$el.text(visibleText);
 
 	// append the ellipsis button
-	var $ellipsiBtn = jQuery('<button />').addClass('ion-more');
+	var $ellipsiBtn = jQuery('<button type="button" />');
 	$ellipsiBtn.insertAfter($el);
+	if (options.buttonClass) {
+		$ellipsiBtn.addClass(options.buttonClass);
+	}
 
-	// show the full text
-	$ellipsiBtn.on('click', function () {
-		console.log(fullText);
-	});
+	if (options.onClick) {
+		$ellipsiBtn
+			.off('click')
+			.on('click', function () {
+				options.onClick(this, fullText);
+			});
+	}
 }

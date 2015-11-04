@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var path = require('path');
 var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
+var shell = require('gulp-shell');
 
 var BUILD_DIR = 'build';
 
@@ -25,6 +26,10 @@ gulp.task('scripts', function () {
 	gulp.src(path.join('scripts', '**/*.js'))
 		.pipe(gulp.dest(BUILD_DIR));
 });
+
+gulp.task('test', shell.task([
+	'mocha-phantomjs test/index.html'
+]));
 
 gulp.task('watch', function () {
 	gulp.watch('templates/**/*.jade', ['templates']);

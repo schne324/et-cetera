@@ -11,10 +11,17 @@ html(lang="en-US")
 				.example http://asdf.com/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf
 			div
 				.example asdfasdlfkjasdlkfjaslkj dflsadkjf laskdjf asdfl kjasdlf kjasd;f lkjasdfl; kjasd;lf kjasd;lfkj asd;lkfj 
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js')
 		script(src='index.js')
 		script.
-			jQuery('.example').etCetera(function (txt) {
-				return txt.substr(0, 40);
-			});
+			jQuery('.example')
+				.etCetera({	
+					characters: function (txt) {
+						return txt.substr(0, txt.lastIndexOf('f') + 1)
+					},
+					onClick: function (btn, text) {
+						alert('the full text is: ' + text);
+					},
+					buttonClass: 'ion-more'
+				});
 
