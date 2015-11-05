@@ -4,7 +4,7 @@
 
 ## Installation / Usage
 * After forking or cloning this repo, assuming node is installed run `npm install`
-* Once the deps are installed, running `gulp` will build everything into the `'build'` directory
+* Once the deps are installed, running `gulp` will build everything into the `build` directory
 * The example page will be found in `build/index.html`
 * if you don't have node installed and do not wish to make any changes, the `build` directory holds everything you need
 
