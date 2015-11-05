@@ -115,8 +115,8 @@ describe('etCetera', function () {
 	// unfortunately, phantom doesn't support certain DOM
 	// methods such as window.getSelection so we can only
 	// run this test if it is being run in browser
-	if (window.mochaPhantomJS) {
-		describe('`options.selectText`', function () {
+	describe('`options.selectText`', function () {
+		if (window.mochaPhantomJS) {
 			it('should select text on click if text not clipped', function (done) {
 				$test.etCetera({
 					selectText: true,
@@ -130,8 +130,10 @@ describe('etCetera', function () {
 					done();
 				});
 			});
-		});
-	}
+		} else {
+			it('can only run this test when running in a browser (run open `test/index.html`)');
+		}
+	});
 		
 });
 
