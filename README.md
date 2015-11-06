@@ -55,4 +55,4 @@ jQuery('#foo').etCetera({
 ```
 
 ## Tests
-* Running tests is as simple as `gulp test`
+* Run tests with `gulp test`
