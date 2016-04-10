@@ -8,16 +8,42 @@ html(lang="en-US")
 		.main(role="main" aria-labelledby="main-heading")
 			h1#main-heading Et Cetera
 			div
-				.example http://asdf.com/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf
+				h2 Clip after 15 characters
+				.example.example-1 http://asdf.com/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf
+				.bin.example-1-bin
+					.close
+						button(type='button' aria-labelledby='example-1-content') X
+					.content#example-1-content
 			div
-				.example asdfasdlfkjasdlkfjaslkj dflsadkjf laskdjf asdfl kjasdlf kjasd;f lkjasdfl; kjasd;lf kjasd;lfkj asd;lkfj 
+				h2 Clip after the first instance of ";"
+				.example.example-2 asdfasdlfkjasdlkfjaslkj dflsadkjf laskdjf asdfl kjasdlf kjasd;f lkjasdfl; kjasd;lf kjasd;lfkj asd;lkfj
 		script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js')
 		script(src='index.js')
 		script.
-			jQuery('.example')
-				.etCetera({	
+			var lastTriggerClick;
+			jQuery('.example-1')
+				.etCetera({
+					characters: 15,
+					onClick: function (btn, text) {
+						lastTriggerClick = btn;
+						var $bin = jQuery('.example-1-bin');
+						$bin.find('.content').html(text);
+						$bin.show().find('.close button').focus();
+					},
+					buttonClass: 'ion-more'
+				});
+
+			jQuery('.close').on('click', function () {
+				jQuery(this).closest('.bin').hide();
+				if (lastTriggerClick) {
+					lastTriggerClick.focus();
+				}
+			});
+
+			jQuery('.example-2')
+				.etCetera({
 					characters: function (txt) {
-						return txt.substr(0, txt.lastIndexOf('f') + 1)
+						return txt.substr(0, txt.indexOf(';') + 1)
 					},
 					onClick: function (btn, text) {
 						alert('the full text is: ' + text);

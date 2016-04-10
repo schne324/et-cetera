@@ -1,7 +1,27 @@
-<!DOCTYPE html><html lang="en-US"><head><title>ET CETERA</title><link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"><link rel="stylesheet" href="styles.css"></head><body><div role="main" aria-labelledby="main-heading" class="main"><h1 id="main-heading">Et Cetera</h1><div><div class="example">http://asdf.com/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf</div></div><div><div class="example">asdfasdlfkjasdlkfjaslkj dflsadkjf laskdjf asdfl kjasdlf kjasd;f lkjasdfl; kjasd;lf kjasd;lfkj asd;lkfj </div></div></div><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script src="index.js"></script><script>jQuery('.example')
-	.etCetera({	
+<!DOCTYPE html><html lang="en-US"><head><title>ET CETERA</title><link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"><link rel="stylesheet" href="styles.css"></head><body><div role="main" aria-labelledby="main-heading" class="main"><h1 id="main-heading">Et Cetera</h1><div><h2>Clip after 15 characters</h2><div class="example example-1">http://asdf.com/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf</div><div class="bin example-1-bin"><div class="close"><button type="button" aria-labelledby="example-1-content">X</button></div><div id="example-1-content" class="content"></div></div></div><div><h2>Clip after the first instance of ";"</h2><div class="example example-2">asdfasdlfkjasdlkfjaslkj dflsadkjf laskdjf asdfl kjasdlf kjasd;f lkjasdfl; kjasd;lf kjasd;lfkj asd;lkfj</div></div></div><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script src="index.js"></script><script>var lastTriggerClick;
+jQuery('.example-1')
+	.etCetera({
+		characters: 15,
+		onClick: function (btn, text) {
+			lastTriggerClick = btn;
+			var $bin = jQuery('.example-1-bin');
+			$bin.find('.content').html(text);
+			$bin.show().find('.close button').focus();
+		},
+		buttonClass: 'ion-more'
+	});
+
+jQuery('.close').on('click', function () {
+	jQuery(this).closest('.bin').hide();
+	if (lastTriggerClick) {
+		lastTriggerClick.focus();
+	}
+});
+
+jQuery('.example-2')
+	.etCetera({
 		characters: function (txt) {
-			return txt.substr(0, txt.lastIndexOf('f') + 1)
+			return txt.substr(0, txt.indexOf(';') + 1)
 		},
 		onClick: function (btn, text) {
 			alert('the full text is: ' + text);

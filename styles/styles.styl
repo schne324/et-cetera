@@ -1,2 +1,28 @@
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  {prop} args
+
+body
+  position relative
+
 button.ion-more, .example
-	display inline-block
+  display inline-block
+
+.bin
+  background-color #000
+  color #fff
+  padding 15px
+  position absolute
+  display none
+  text-align center
+  width 100%
+  word-wrap break-word
+  margin-top -40px
+  vendor(box-sizing, border-box)
+  overflow hidden
+  max-width 740px
+
+
+  .close
+    float right
