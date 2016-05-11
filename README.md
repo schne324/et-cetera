@@ -32,7 +32,7 @@ OR
 ```js
 jQuery('#foo').etCetera({
 	characters: function (trigger, text) {
-		return txt.substr(0, txt.lastIndexOf('/')) // will clip #foo at its last slash
+		return text.substr(0, text.lastIndexOf('/')) // will clip #foo at its last slash
 	}
 }
 });
