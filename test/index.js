@@ -25,13 +25,10 @@ describe('etCetera', function () {
 		assert.equal(0, $test.next().length);
 	});
 
-	it('should add the button if theres stuff to clip', function (done) {
+	it('should add the button if theres stuff to clip', function () {
 		$test.etCetera({ characters: 2 });
-		setTimeout(function () {
-			assert.equal(1, $test.next().length);
-			assert.isTrue($test.next().is('button'));
-			done();
-		});
+		assert.equal(1, $test.next().length);
+		assert.isTrue($test.next().is('button'));
 	});
 
 	describe('`options.characters`', function () {
@@ -84,31 +81,25 @@ describe('etCetera', function () {
 	});
 
 	describe('`options.buttonClass`', function () {
-		it('should add the provided class to the trigger', function (done) {
+		it('should add the provided class to the trigger', function () {
 			$test.etCetera({
 				buttonClass: 'foo-boo',
 				characters: 3
 			});
 
-			setTimeout(function () {
-				var $trig = $test.next();
-				assert.equal($trig.length, 1);
-				assert.isTrue($test.next().hasClass('foo-boo'));
-				done();
-			});
+			var $trig = $test.next();
+			assert.equal($trig.length, 1);
+			assert.isTrue($test.next().hasClass('foo-boo'));
 		});
 
-		it('should default to "ion-more"', function (done) {
+		it('should default to "ion-more"', function () {
 			$test.etCetera({
 				characters: 3
 			});
 
-			setTimeout(function () {
-				var $trig = $test.next();
-				assert.equal($trig.length, 1);
-				assert.isTrue($test.next().hasClass('ion-more'));
-				done();
-			});
+			var $trig = $test.next();
+			assert.equal($trig.length, 1);
+			assert.isTrue($test.next().hasClass('ion-more'));
 		});
 	});
 
@@ -169,6 +160,21 @@ describe('etCetera', function () {
 					assert.isTrue($test.children().last().hasClass('bears'));
 				});
 			});
+	});
+
+	describe('`options.buttonLabel`', function () {
+		it('should add the provided text as the aria-label for the ellipsis button', function () {
+			var buttonText = 'First, Research, Educate, Decide';
+			$test.etCetera({ characters: 5, buttonClass: 'fred', buttonLabel: buttonText });
+			assert.equal($test.next('.fred').length, 1);
+			assert.equal($test.next('.fred').attr('aria-label'), buttonText);
+		});
+
+		it('should not add an aria-label to the ellipsis button by default', function () {
+			$test.etCetera({ characters: 5, buttonClass: 'cold-brew' });
+			assert.equal($test.next('.cold-brew').length, 1);
+			assert.isUndefined($test.next('.cold-brew').attr('aria-label'));
+		});
 	});
 });
 

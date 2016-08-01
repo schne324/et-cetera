@@ -20,7 +20,8 @@
 			characters: 50, // can be a number or a function that returns characters to display
 			buttonClass: 'ion-more',
 			selectText: true,
-			insertAs: 'nextSibling' // relative to element being clipped: prevSibling, nextSibling, firstChild, lastChild
+			insertAs: 'nextSibling', // relative to element being clipped: prevSibling, nextSibling, firstChild, lastChild
+			buttonLabel: null
 		}, userOptions);
 		return this.each(function () {
 			etc(this, options);
@@ -58,6 +59,10 @@
 		var $ellipsiBtn = jQuery('<button type="button" />');
 
 		$ellipsiBtn.addClass(options.buttonClass || '');
+
+		if (options.buttonLabel) {
+			$ellipsiBtn.attr('aria-label', options.buttonLabel);
+		}
 
 		// insert the button
 		$ellipsiBtn[methodMap[options.insertAs]]($el);

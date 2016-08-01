@@ -1,6 +1,6 @@
 {
   "name": "et-cetera",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ellipsis handler",
   "main": "scripts/index.js",
   "scripts": {
