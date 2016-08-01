@@ -8,7 +8,8 @@ jQuery('.example-1')
 			$bin.find('.content').html(text);
 			$bin.show().find('.close button').focus();
 		},
-		buttonClass: 'ion-more'
+		buttonClass: 'ion-more',
+		insertAs: 'prevSibling'
 	});
 
 jQuery('.close').on('click', function () {
@@ -26,5 +27,6 @@ jQuery('.example-2')
 		onClick: function (btn, text) {
 			alert('the full text is: ' + text);
 		},
-		buttonClass: 'ion-more'
+		buttonClass: 'ion-more',
+		insertAs: 'lastChild'
 	});</script></body></html>

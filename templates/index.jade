@@ -30,7 +30,8 @@ html(lang="en-US")
 						$bin.find('.content').html(text);
 						$bin.show().find('.close button').focus();
 					},
-					buttonClass: 'ion-more'
+					buttonClass: 'ion-more',
+					insertAs: 'prevSibling'
 				});
 
 			jQuery('.close').on('click', function () {
@@ -48,6 +49,6 @@ html(lang="en-US")
 					onClick: function (btn, text) {
 						alert('the full text is: ' + text);
 					},
-					buttonClass: 'ion-more'
+					buttonClass: 'ion-more',
+					insertAs: 'lastChild'
 				});
-

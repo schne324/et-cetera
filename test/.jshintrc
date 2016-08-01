@@ -1,8 +1,6 @@
 {
-  "laxbreak": true,
-  "strict": false,
   "node": true,
-  "globals": [
+  "predef": [
     "assert",
     "before",
     "beforeEach",
@@ -10,6 +8,8 @@
     "should",
     "it",
     "describe",
-    "jQuery"
+    "jQuery",
+    "window",
+    "document"
   ]
 }

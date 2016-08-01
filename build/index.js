@@ -1,18 +1,26 @@
 (function (jQuery) {
 	'use strict';
 
+	var methodMap = {
+		nextSibling: 'insertAfter',
+		prevSibling: 'insertBefore',
+		firstChild: 'prependTo',
+		lastChild: 'appendTo'
+	};
+
 	/**
 	 * Clips an element's text and replaces
 	 * the clipped portion with an ellipsis button
-	 * 
+	 *
 	 * @param  {Object} options User's options
-	 * @return {jQuery}          this	
+	 * @return {jQuery}          this
 	 */
 	jQuery.fn.etCetera = function (userOptions) {
 		var options = jQuery.extend({
 			characters: 50, // can be a number or a function that returns characters to display
 			buttonClass: 'ion-more',
-			selectText: true
+			selectText: true,
+			insertAs: 'nextSibling' // relative to element being clipped: prevSibling, nextSibling, firstChild, lastChild
 		}, userOptions);
 		return this.each(function () {
 			etc(this, options);
@@ -32,7 +40,7 @@
 			visibleText = $el.text().substr(0, options.characters);
 		}
 
-		if (visibleText === fullText) { 
+		if (visibleText === fullText) {
 			// options.characters did not dictate any modification of the text
 			if (options.selectText) {
 				$el.on('click', function () {
@@ -48,10 +56,11 @@
 
 		// append the ellipsis button
 		var $ellipsiBtn = jQuery('<button type="button" />');
-		$ellipsiBtn.insertAfter($el);
-		if (options.buttonClass) {
-			$ellipsiBtn.addClass(options.buttonClass);
-		}
+
+		$ellipsiBtn.addClass(options.buttonClass || '');
+
+		// insert the button
+		$ellipsiBtn[methodMap[options.insertAs]]($el);
 
 		if (options.onClick) {
 			$ellipsiBtn
