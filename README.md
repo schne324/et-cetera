@@ -18,7 +18,7 @@
 	* (defaults to `'ion-more'`)
 * `selectText`: _{Boolean}_ Whether or not to select the text in the given element when its clicked
 	* (defaults to `true`)
-* `insertAs`: _String_ Where to insert the button relative to the element being clipped: `'prevSibling'`, `'nextSibling'`, `'firstChild'`, or `'lastChild'`
+* `insertAs`: _{String_} Where to insert the button relative to the element being clipped: `'prevSibling'`, `'nextSibling'`, `'firstChild'`, or `'lastChild'`
 	* defaults to `'nextSibling'`
 * Example usage:
 
